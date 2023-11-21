@@ -12,7 +12,7 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="./main.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
   </head>
   <body>
     <header>
@@ -52,8 +52,18 @@
       </section>
       <section id="portfolio">
         <h2>Mes Projets</h2>
+        <div class="filters">
+          <input class="btn-filters active" type="button" value="Tous" />
+          <input class="btn-filters" type="button" value="Objets" />
+          <input class="btn-filters" type="button" value="Appartements" />
+          <input
+            class="btn-filters"
+            type="button"
+            value="Hotels & restaurants"
+          />
+        </div>
         <div class="gallery">
-           <!--<figure>
+          <!--<figure>
             <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" />
             <figcaption>Abajour Tahina</figcaption>
           </figure>
