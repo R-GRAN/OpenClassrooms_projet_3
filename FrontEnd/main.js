@@ -1,3 +1,4 @@
+/* Fonction gerant l'appel à l'API */
 async function fetchData() {
   try {
     const response = await fetch("http://localhost:5678/api/works");
@@ -8,6 +9,7 @@ async function fetchData() {
   }
 }
 
+/* Fonction generant la gallery */
 function genererProjets(projets) {
   for (let i = 0; i < projets.length; i++) {
     const projet = projets[i];
@@ -27,6 +29,7 @@ function genererProjets(projets) {
   }
 }
 
+/* Fonction generant la gallery au début du chargement de la page */
 async function initialiserPage() {
   try {
     let projets = await fetchData();
@@ -36,10 +39,12 @@ async function initialiserPage() {
   }
 }
 
+/* Fonction effacant la gallery */
 function resetGallery() {
   document.querySelector(".gallery").innerHTML = "";
 }
 
+/* Fonction filtrant et affichant les projets selon le clic sur les filtres  */
 async function filtrerProjets(evt) {
   try {
     let projets = await fetchData();
@@ -59,6 +64,12 @@ async function filtrerProjets(evt) {
   }
 }
 
+/* Fonction enregistrant le token dans le localStorage */
+function storeToken(data) {
+  localStorage.setItem("token", JSON.stringify(data));
+}
+
+/* Fonction permettant de se connecter */
 function login() {
   const formulaireLogin = document.querySelector(".formulaire-login");
   formulaireLogin.addEventListener("submit", (evt) => {
@@ -77,7 +88,9 @@ function login() {
         headers: { "Content-Type": "application/json" },
         body: chargeUtile,
       }).then((res) => {
-        if (res.status == 404) {
+        if (!res.ok) {
+          res.json().then((error) => console.log("error", error));
+
           let formError = document.getElementById("form-error");
           formError.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
           setTimeout(() => {
@@ -86,8 +99,8 @@ function login() {
         } else {
           res
             .json()
-            .then((data) => window.localStorage.getItem(data))
-            .then((location.href = "index.html#home"));
+            .then((data) => storeToken(data))
+            .then((location.href = "index.html"));
         }
       });
     } catch (error) {
