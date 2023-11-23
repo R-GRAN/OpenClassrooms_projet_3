@@ -119,6 +119,19 @@ btns.forEach((element) =>
   })
 );
 
+let token = localStorage.getItem("token");
+
 initialiserPage();
+
+if (token !== null) {
+  const log = document.getElementById("inAndOut");
+  log.innerText = "logout";
+
+  const banner = document.getElementById("editor-banner");
+  banner.style.display = "flex";
+
+  const filters = document.getElementById("filters");
+  filters.style.display = "none";
+}
 
 login();
