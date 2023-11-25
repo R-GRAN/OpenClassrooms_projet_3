@@ -23,7 +23,7 @@
   </head>
   <body>
     <div id="editor-banner">
-      <div class="black-container-element">
+      <div class="editor-banner-element">
         <i class="fa-solid fa-pen-to-square"></i>
         <span>Mode édition</span>
       </div>
@@ -69,7 +69,24 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div class="portfolio-title">
+          <h2>Mes Projets</h2>
+          <a class="modal-link" href="#modal1" style="display: none"
+            ><i class="fa-solid fa-pen-to-square"></i> modifier</a
+          >
+        </div>
+        <aside id="modal1" class="modal" style="display: none">
+          <div class="modal-wrapper modal-stop">
+            <nav class="modal-wrapper-nav">
+              <span class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </nav>
+            <h3 class="modal-wrapper-title">Galerie photo</h3>
+            <div class="modal-wrapper-gallery"></div>
+            <input type="submit" value="Ajouter une photo" />
+          </div>
+        </aside>
         <div id="filters">
           <input class="btn-filters active" type="button" value="Tous" />
           <input class="btn-filters" type="button" value="Objets" />
@@ -80,6 +97,7 @@
             value="Hotels & restaurants"
           />
         </div>
+
         <div class="gallery">
           <!--<figure>
             <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" />
